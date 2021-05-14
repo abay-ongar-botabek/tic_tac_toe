@@ -1,20 +1,13 @@
-// import * as React from "react";
-// import "../src/index.css"
+import * as React from "react";
+import ReactDOM from "react-dom";
 
-// class App extends React.Component {
-//     render () {
-//         return (
-//             <div className="shopping-list">
-//                 <h2>Shopping list for</h2>
-//                 <ul>
-//                     <li>Barcelona</li>
-//                     <li>Bayern Minich</li>
-//                     <li>Manchester City</li>
-//                     <li>PSG</li>
-//                 </ul>
-//             </div>
-//         )
-//     }
-// }
 
-// export default App;
+const App = () => {
+  return (
+    <div>
+      <h3>Hello from GitHUB</h3>
+    </div>
+    )
+}
+
+export defaults App();
