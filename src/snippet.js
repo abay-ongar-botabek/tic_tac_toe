@@ -1,22 +1,17 @@
 import * as React from "react";
-import reactDom from "react-dom";
 import ReactDOM from "react-dom";
-import "../src/index.css";
+import "../src/index.css"
 
 
-class Square extends React.Component {
-
-  render () {
-    return (
-      <button className="square" onClick={() => {this.props.onBasu()}} >
-        {this.props.value}
-      </button>
-    )
-  }
+const Square = (something) => {
+  return (
+    <button className="square" onClick={something.onBasu} >
+      {something.valueProperty}
+    </button>
+  )
 }
 
-
-class Board extends React.Component {
+class Board extends React.Component{
 
   constructor (props) {
     super(props);
@@ -26,33 +21,36 @@ class Board extends React.Component {
     }
   }
 
-  renderSquare (i) {
+  renderSquare(i) {
     return (
-      <Square value={this.state.squares[i]} onBasu={() => {this.handleClick(i)}} />
+      <Square valueProperty={this.state.squares[i]} onBasu={() => {this.handleClick(i)}} />
     )
   }
 
   handleClick(i){
     const squares = this.state.squares.slice();
-    if(calculateWinner(squares) || squares[i] ){
+    if (calculateWinner(squares) || squares[i]) {
       return;
     }
     squares[i] = this.state.xNext ? "X" : "O";
     this.setState({squares : squares, xNext: !this.state.xNext});
   }
 
-  render (){
+  render () {
     const winner = calculateWinner(this.state.squares);
     let status;
-    if(winner) {
-      status = "Winner: " + winner;
-    }else {
-      status = "Next player: " + (this.state.xNext ? "X" : "O");
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xNext ? 'X' : 'O');
     }
+
+    // const status = `Next Player: ${this.state.xNext ? "X" : "O"}`;
 
     return (
       <div>
         <div className="status">{status}</div>
+
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -74,10 +72,10 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
-  render (){
+  render () {
     return (
       <div className="game">
-        <div className="game-info">
+        <div  className="game-info">
           <Board />
         </div>
         <div>
